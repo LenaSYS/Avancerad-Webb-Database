@@ -10339,9 +10339,9 @@ insert into info(name,type,country,about,climate,climatecode,province,municipali
 
 create table comment(
     id integer,
-    username VARCHAR(128),
-    email VARCHAR(256),
+    username varchar(128),
+    email varchar(256),
     content text,
-    commentdate DATETIME,
+    commentdate datetime,
     PRIMARY KEY(id)
 );
