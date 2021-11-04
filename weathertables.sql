@@ -10348,6 +10348,11 @@ create table user (
     foreign key (favlocation) REFERENCES info(name)
 );
 
+insert into user(id,username,email,favlocation) values("1","Greger Ohlsson","greger.olsson@net.nu","Grums");
+insert into user(id,username,email,favlocation) values("2","Sven Grunden","svenne.grunden@swnet.se","Barcelona");
+insert into user(id,username,email,favlocation) values("3","Nisse Hult","nissehult@net.nu","Grums");
+insert into user(id,username,email,favlocation) values("4","Glenn Nilsson","glen@swnet.se","Arjeplog");
+
 create table comment(
 	  id integer,
     location varchar(24),
@@ -10361,6 +10366,13 @@ create table comment(
     foreign key(author) references user(ID)
 );
 
+insert into comment(id,location,replyto,author,content,posted) values(1111,"Grums",null,"1","Vaknade upp av stanken från pappersbruket som vinden tryckte framför sig längs älven.","2021-11-01 09:30");
+insert into comment(id,location,replyto,author,content,posted) values(1112,"Grums",1111,"3","På denna sidan av älven är det ännu värre.","2021-11-01 09:33");
+insert into comment(id,location,replyto,author,content,posted) values(1113,"Grums",1112,"4","Värmlänningar, vilka gnälliga typer.","2021-11-01 10:04");
+insert into comment(id,location,replyto,author,content,posted) values(1114,"Grums",1112,"3","Det är så illa nu, så att snuset smakar kvavt.","2021-11-03 10:07");
+insert into comment(id,location,replyto,author,content,posted) values(1115,"Grums",1112,"4","Här uppe i norr är det så kallt denna veckan så att snuset fryser i fickan och värmlänningarna klagar på odören från bruket. Veklingar.","2021-12-07 11:24");
+insert into comment(id,location,replyto,author,content,posted) values(1116,"Arjeplog",null,"4","Nu kan det väl ändå inte bli kallare?","2021-12-08 11:24");
+
 create table likes(
     user integer,
     comment integer,
@@ -10368,3 +10380,13 @@ create table likes(
     foreign key(user) references user(id),
     foreign key(COMMENT) references comment(id)
 );
+
+insert into likes (user,comment) values("2","1111");
+insert into likes (user,comment) values("2","1113");
+insert into likes (user,comment) values("1","1114");
+insert into likes (user,comment) values("2","1114");
+insert into likes (user,comment) values("3","1114");
+insert into likes (user,comment) values("2","1116");
+insert into likes (user,comment) values("1","1116");
+
+
